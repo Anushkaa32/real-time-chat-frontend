@@ -17,18 +17,18 @@ export default function Home() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`, {
-        identifier: email,
-        password: password,
-      });
-
+      const res = await axios.post(
+        process.env.NEXT_PUBLIC_API_URL + "/api/auth/local",
+        { identifier: email, password: password }
+      );
+  
       localStorage.setItem("token", res.data.jwt);
       alert("Login Successful!");
       router.push("/chat");
     } catch (error: any) {
       alert("Login Failed: " + error?.response?.data?.error?.message || "An unknown error occurred.");
     }
-  };
+  };  
 
   const handleRegister = async () => {
     try {
