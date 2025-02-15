@@ -17,7 +17,7 @@ export default function Home() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:1337/api/auth/local", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`, {
         identifier: email,
         password: password,
       });
@@ -32,7 +32,7 @@ export default function Home() {
 
   const handleRegister = async () => {
     try {
-      await axios.post("http://localhost:1337/api/auth/local/register", {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/local/register`, {
         username: email.split("@")[0],
         email: email,
         password: password,

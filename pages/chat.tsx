@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 import { useRouter } from "next/router";
 
-const socket = new WebSocket("ws://localhost:8080");
+const socket = new WebSocket(process.env.NEXT_PUBLIC_WEBSOCKET_URL || "wss://real-time-chat-backend-jsqv.onrender.com");
 
 export default function Chat() {
   const [message, setMessage] = useState<string>(""); 
@@ -39,16 +39,6 @@ export default function Chat() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    router.push("/");
-  };
-  socket.onmessage = (event) => {
-    console.log("📩 Message from server:", event.data); 
-    setMessages((prev) => [...prev, event.data]);
-  };
-  
-
   return (
     <div style={{ 
         textAlign: "center", 
@@ -61,23 +51,6 @@ export default function Chat() {
         justifyContent: "center",
       }}>            
       <h1>Real-Time Chat</h1>
-
-      <button
-        style={{
-          position: "absolute",
-          top: "20px",
-          right: "20px",
-          padding: "10px 15px",
-          background: "#E8D59E",
-          color: "black",
-          border: "none",
-          cursor: "pointer",
-          borderRadius: "5px",
-        }}
-        onClick={handleLogout}
-      >
-        Logout
-      </button>
 
       <div
         style={{
@@ -95,38 +68,14 @@ export default function Chat() {
           <p key={index}>{msg}</p>
         ))}
       </div>
-      <div style={{ 
-  display: "flex", 
-  justifyContent: "center", 
-  alignItems: "center", 
-  gap: "10px",
-  marginTop: "20px" // ✅ Adds spacing between chat & input
-}}>
 
-  <input
-    type="text"
-    value={message}
-    onChange={(e) => setMessage(e.target.value)}
-    placeholder="Type a message..."
-    style={{ padding: "10px", width: "250px", borderRadius: "5px", border: "1px solid #ccc" }}
-  />
-    <button
-    onClick={sendMessage}
-    style={{
-        padding: "10px 20px",
-        background: "#E8D59E",
-        color: "black",
-        border: "none",
-        cursor: "pointer",
-        borderRadius: "5px",
-        width: "fit-content", // ✅ Fix for auto-sizing
-        minWidth: "100px", // ✅ Ensures a proper button size
-        display: "inline-block", // ✅ Prevents it from taking full width
-    }}
-    >
-    Send
-    </button>
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Type a message..."
+      />
+      <button onClick={sendMessage}>Send</button>
     </div>
-        </div>
   );
 }
