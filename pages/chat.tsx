@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"; 
 import { useRouter } from "next/router";
 
-const socket = new WebSocket(process.env.NEXT_PUBLIC_WEBSOCKET_URL || "wss://real-time-chat-backend-jsqv.onrender.com");
+const websocketUrl = process.env.NEXT_PUBLIC_WEBSOCKET_URL || "wss://real-time-chat-backend-jsqv.onrender.com";
+const socket = new WebSocket(websocketUrl);
+
 
 export default function Chat() {
   const [message, setMessage] = useState<string>(""); 
