@@ -85,8 +85,14 @@ vercel deploy
 
 ---
 
-## 🖼️ Screenshots
-(Add screenshots of the frontend UI here)
+## 🖼️ Screenshots (after implementing both frontend and backend)
+
+![image](https://github.com/user-attachments/assets/cf8a6e46-731f-476e-bffa-e28e73fea8a3)
+![image](https://github.com/user-attachments/assets/05edb3ea-54f6-4edf-853a-a14d1a0f9d42)
+![image](https://github.com/user-attachments/assets/e2ecf1f2-3e78-4402-ae05-28a86de09147)
+![image](https://github.com/user-attachments/assets/c2a3a5b4-45bb-485f-901d-f51f28400a0e)
+![image](https://github.com/user-attachments/assets/23fbf538-588e-4b42-9f60-1fb1101c8ef6)
+![image](https://github.com/user-attachments/assets/b060b18e-8cd2-41cd-8026-d18d5ff1f8d8)
 
 ---
 
